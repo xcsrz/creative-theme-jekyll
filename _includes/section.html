@@ -1,0 +1,83 @@
+{% capture headline %}{% if include.section.headline %}{{ include.section.headline }}{% else %}{% if include.header %}{{ site.headline }}{% endif %}{% endif %}{% endcapture %}
+{% capture section_classes %}{% if include.section.fluid %} no-padding {% endif %}{% if include.section.classes %} {{ include.section.classes }} {% endif %}{% endcapture %}
+{% capture header_classes %}{% if include.section.header_classes %}{{ include.section.header_classes }}{% else %}col-lg-12 text-center{% endif %}{% endcapture %}
+{% capture body_classes %}{% if include.section.body_classes %}{{ include.section.body_classes }}{% else %}col-lg-12 text-center{% endif %}{% endcapture %}
+{% capture hr_class %}{% if include.section.hr_class %}{{ include.section.hr_class }}{% else %}primary{% endif %}{% endcapture %}
+<{% if include.header %}header{% else %}section{% endif %} id="{{ include.id }}"
+    class="{{ section_classes }}">
+    <div class="container{% if include.section.fluid %}-fluid{% endif %}">
+        <div class="row {% if include.section.fluid %}no-gutter {% endif %}">
+            {% if headline.size > 1 %}
+                <div class="{{ header_classes }}">
+                    <h{% if include.header %}1{% else %}2{% endif %} class="section-heading"> 
+                        {{ headline }}
+                    </h{% if include.header %}1{% else %}2{% endif %}>
+                    {% if include.section.content.size > 1 %}
+                        <hr class="{{ hr_class }}">
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if include.section.content.size > 1 %}
+                <div class="{{ body_classes }} section-content">
+                    {{ include.section.content }}
+                </div>
+            {% endif %}
+            {% if include.section.button_text and include.section.button_link %}
+                {% capture button_class %}{% if include.section.button_class %}{{ include.section.button_class }}{% else %}btn btn-default btn-xl wow tada{% endif %}{% endcapture %}
+                {% capture button_style %}{% if include.section.button_style %}{{ include.section.button_style }}{% else %}visibility: visible; animation-name: tada;{% endif %}{% endcapture %}
+                <div class="col-lg-12 text-center">
+                    <a href="{{ include.section.button_link }}" class="{{ button_class }}" style="{{ button_style }}">{{ include.section.button_text }}</a>
+                </div>
+            {% endif %}
+
+
+            {% if include.section.boxes %}
+            {% capture box_classes %}{% if include.section.box_classes %}{{ include.section.box_classes }}{% else %}col-lg-4 col-md-6 text-center{% endif %}{% endcapture %}
+            {% for box in include.section.boxes %}
+            <div class="{{ box_classes }}">
+                {% if box.link %}<a href="{{ box.link }}"{% else %}<div{% endif %} class="{{ include.id }}-box">
+                    {% if box.img%}
+                        <img src="{{ box.img }}" class="img-responsive" alt="{{ box.alt }}">
+                        <div class="{{ include.id }}-box-caption">
+                            <div class="{{ include.id }}-box-caption-content">
+                    {% endif %}
+                    {% if box.icon %}
+                        {% capture icon_class %}
+                            {% if box.icon_class %}
+                                {{ box.icon_class }}
+                            {% else %}
+                                wow bounceIn text-primary
+                            {% endif %}
+                        {% endcapture %}
+                        <i class="icon ion-{{ box.icon }} {{ icon_class }}"></i>
+                    {% endif %}
+
+                    {% if box.title %}
+                        <h3>
+                            {{ box.title }}
+                        </h3>
+                    {% endif %}
+
+                    {% if box.subtitle %}
+                        <p>
+                            {{ box.subtitle }}
+                        </p>
+                    {% endif %}
+                    
+                    {% if box.link_text %}
+                        <p>
+                            {{ box.link_text }}
+                        </p>
+                    {% endif %}
+
+                    {% if box.img %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% if box.link %}</a>{% else %}</div>{% endif %}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+  </{% if include.header %}header{% else %}section{% endif %}>

@@ -1,0 +1,23 @@
+{
+  "name": "jekyll-creative",
+  "homepage": "https://github.com/xcsrz/jekyll-creative",
+  "authors": [
+    "xcsrz <x@xcsrz.me>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "Ionicons": "ionicons#^2.0.1",
+    "animate-sass": "^0.6.6"
+  }
+}

@@ -32,13 +32,29 @@
 //         padding-left: $spacing-unit / 2;
 //     }
 // }
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 // variables.less
-$theme-primary: #F05F40;
-$theme-dark: #222;
+// $theme-primary: #F05F40;
+// $theme-primary: {{ site.colors.theme_primary }};
+// $theme-dark: #222;
+// $theme-dark: {{ site.colors.theme_dark }};
+{% for color in site.colors %}
+${{ color.name }}: {{ color.hex }};
+{% endfor %}
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "mixins",
         "base"
 ;
+
+$ionicons-font-path: "/bower_components/Ionicons/fonts";
+@import "../bower_components/Ionicons/scss/ionicons";
+
+
+// Animate
+$use-tada: true;
+$use-bounceIn: true;
+@import "../bower_components/animate-sass/animate"

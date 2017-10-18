@@ -1,0 +1,17 @@
+---
+layout: default
+---
+{% include nav.html %}
+{% for section-id in page.sections %}
+{% assign section = site.page-sections | where:"slug", section-id | first %}
+{% include section.html id=section-id section=section header=forloop.first %}
+{% endfor %}
+
+{% comment %}
+  {% include header.html %}
+  {% include call-to-action.html %}
+  {% include services.html %}
+  {% include portfolio.html %}
+  {% include aside.html %}
+  {% include contact.html %}
+ {% endcomment %}

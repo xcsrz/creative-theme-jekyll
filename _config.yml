@@ -1,12 +1,29 @@
 # Site settings
-title:
-email:
-description: > # this means to ignore newlines until "baseurl:"
+title: Jekyll Creative
+headline: Your Favorite Bootstrap Theme Packaged For Jekyll
+description: An adaptation of a great theme created by the folks over at Start Bootstrap for jekyll to make it readily usable for rapid website development.
+
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "" # the base hostname & protocol for your site
 
-twitter_username:
-github_username:
-
 # Build settings
 markdown: kramdown
+
+sass:
+  # sass_dir: bower_components
+  style: compressed
+
+collections:
+  - page-sections
+
+fonts:
+  - name: Open Sans
+    link: http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800
+  - name: Merriweather
+    link: http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic
+
+colors:
+  - name: theme_primary
+    hex: "#F05F40"        #default #F05F40
+  - name: theme_dark
+    hex: "#222"           # default #222
